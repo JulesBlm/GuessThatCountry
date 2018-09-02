@@ -1,0 +1,270 @@
+.app {
+  --button-color: #16c5d8;
+  --margin-main: 15px;
+}
+
+.continents-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.continent {
+  outline: 0;
+  margin: 5px;
+  width: 20vw;
+  height: 20vw;
+  min-width: 150px;
+  min-height: 150px;
+  border: 4px solid #155e63;    
+  background-color: #16c5d8;
+  color: white;
+  font-size: 2em;
+  flex-grow: 2;
+  transition: ease 0.2s;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: white;
+  background:#16c5d8;
+  border-radius: 25px;
+  width: 500px;
+  height: 50px; 
+  padding: 10px;
+  margin-top: 2px;
+}
+
+.skipped {
+  background-color: coral;
+}
+
+.correct {
+  background-color: palegreen;
+}
+
+.continent:hover {
+  border-color: #005baa;
+  background-color: #fff;
+  color: #005baa;
+  text-decoration: underline;    
+}
+
+.continent:focus {
+  outline: 0;
+  animation: shrink 0.25s;
+  background-color: #73dce7;
+  text-decoration: underline;
+}
+
+@keyframes shrink {
+0% {
+  transform: scale(1);
+}
+
+50% {
+  transform: scale(0.8);
+}
+
+100% {
+  transform: scale(1);
+}
+}
+
+body {
+  margin: 0 0;
+}
+
+.app {
+  font-family: Futura, Segoe UI, sans-serif;
+  margin: 20px var(--margin-main);
+}
+
+form {
+display: block;
+}
+
+.toprow {
+  display: flex;
+  justify-content: space-between;    
+}
+
+.drawbox {
+  display: flex;
+min-height: 450px;
+border: 2px solid var(--button-color);
+  border-radius: 25px;
+margin: 2vh 0;
+padding: 20px;
+}
+
+.drawbox > * {
+margin: auto;
+}
+
+.message {
+position: absolute;
+top: 15vh;
+left: 67vw;
+background-color: lightyellow;
+border: 4px solid peachpuff;
+border-radius: 25px;
+max-width: 500px;
+padding: 20px;
+transform: rotate(-10deg);
+box-shadow: 7px 7px 30px 0px rgba(0,0,0,0.41);
+transition: ease 1s;
+}
+
+.text-input {
+  width: 30vw;
+text-transform: uppercase;
+font-size: 18px;
+font-weight: 700;
+  -webkit-appearance: textfield;
+  display: inline-block;
+  padding: 15px 20px 15px 20px;
+  border-style: solid none solid solid;
+  border-width: 2px;
+  border-color: var(--button-color) transparent var(--button-color) var(--button-color);
+  border-radius: 25px 0px 0px 25px;
+  box-shadow: inset 0 0 0 0 #fff;    
+}
+
+.text-input:focus {
+outline: 0;
+  border-color: #005baa;	
+}
+
+#back-button {
+  margin-left: -27px;
+}
+
+#back-button:hover {
+  margin-left: calc(-1*var(--margin-main));
+}
+
+.button {
+  display: inline-block;
+  padding: 13px 40px 12px;
+  border: 2px solid #16c5d8;
+  background-color: var(--button-color);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  font-family: sans-serif;
+  color: #fff;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  outline: 0;
+  transition: ease 0.2s;
+}
+
+.button-right {
+  background-color: MEDIUMTURQUOISE;
+  border-radius: 100px;
+  border-left: 1px;
+  padding-left: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.button-middle {
+  border-left: 1px;
+background-color: mediumpurple;
+}
+
+.button:hover {
+  border-color: #005baa;
+  background-color: #fff;
+  color: #005baa;
+}
+
+.button:active {
+  outline: 0;
+  border-color: #005baa;
+  background-color: #005baa;
+  color: #fff;
+}
+
+.button[disabled] {
+background-color: lightsteelblue;
+  color: aliceblue;
+  border-color: #005baa;
+cursor: not-allowed;	
+}
+
+.button[disabled]:hover {
+background-color: lightsteelblue;
+cursor: not-allowed;
+  color: aliceblue;
+}
+
+.score > h1, h2 {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 750px) {
+  .message {
+      position: absolute;
+      transform: rotate(-5deg);
+      top: 5vh;
+      left: 70vw;
+  }
+
+  .message > h2 {
+      font-size: 0.9em ;
+  }
+
+  #start-button {
+      width: 100px;
+  }
+
+  .app {
+      margin: 0 10px;
+  }
+
+  #back-button:hover {
+      margin-left: -4vw;
+  }
+  .drawbox {
+      width: 80vw;
+  }
+
+  .text-input {
+      width: 80vw;
+      border: 2px solid var(--button-color);
+      border-radius: 25px;
+  }
+  
+  form > .button {
+      width: 90vw;
+      border: 2px solid var(--button-color);
+      padding:10px;
+      margin-top: 2px;
+      border-radius: 10px;
+  }
+
+  form > * {
+      border: 2px solid #16c5d8;
+      border-radius: 10px;
+  }
+  
+  .button[active]:hover {
+      border: 2px solid white;
+      margin-top: 2px;
+  }
+}
+
+/* SVG */
+path, line, ellipse {
+fill: none;
+stroke: #000;
+vector-effect: non-scaling-stroke;
+stroke-width: 3;
+}

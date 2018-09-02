@@ -1,0 +1,43 @@
+.results-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    --height: 50px;
+    height: var(--height);
+    max-width: 550px;
+    width: 55vw;
+    padding: 10px;
+    margin-top: 8px;
+    text-align: center;
+    line-height: var(--height); 
+    vertical-align: middle;
+    font-size: 1.4em;
+    color: white;
+    background:#16c5d8;
+    border-radius: 25px;
+}
+
+.littleCountry {
+    align-self: flex-start
+}
+
+.littleCountry path {
+    fill: white !important;
+}
+
+.skipped {
+    background-color: coral;
+}
+
+.correct {
+    background-color: palegreen;
+}
+
+.score > h1 {
+    text-decoration: underline;
+}

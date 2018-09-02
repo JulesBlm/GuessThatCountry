@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+=<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="128px" height="128px" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st2{font-family:'Futura-CondensedExtraBold', 'sans-serif;}
+	.st3{font-size:15px;}
+</style>
+<rect class="st0" width="128" height="53.7"/>
+<text transform="matrix(1 0 0 1 44.2354 12.3706)"><tspan x="0" y="0" class="st1 st2 st3">Guess</tspan><tspan x="5.6" y="18" class="st1 st2 st3">That</tspan><tspan x="-8.6" y="36" class="st1 st2 st3">Country!</tspan></text>
+</svg>
