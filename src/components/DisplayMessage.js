@@ -11,8 +11,8 @@ class DisplayMessage extends React.Component {
 
   display = (kind, country, previous) => {
 
-    const correctMessages = ["That's correct!", "Good one!", "Nice", "Steady!", "Going good", "Right on", "A+", "Yup"];
-    const incorrectMessages = ["Wrong!", "Try again", "That ain't right man", "Nope"]
+    const correctMessages = ["That's correct!", "Good one!", "Nice", "Steady!", "Going good", "Right on", "A+", "Yup", "Smooth sailing!"];
+    const incorrectMessages = ["Wrong!", "Try again", "That ain't right man", "Nope", "Not even close", "Nuh-uh"]
 
     switch (kind) {
       case "first":

@@ -1,5 +1,61 @@
-body {
+obody {
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.25' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");}
+
+.intro {
+  border: 4px solid #3997b0;
+  text-align: center;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px 2px #555151;
+  background-color: #40a8c4;
+}
+
+.name {
+  color: #66b9cf;
+  margin: 0;
+  font-weight: 1500;
+  font-size: 3em;
+  text-shadow: #555151 2px 1px 0px,
+               #555151 3px 2px 0px,
+               #555151 4px 3px 0px,
+               #555151 4px 4px 0px;
+}
+
+.intro-text {
+  font-size: 1.2em;
+  font-weight: 100;
+  color: white;
+}
+
+.select {
+  outline: 0;
+  transition: ease 0.2s;
+  margin: 5px;
+  font-size: 2em;
+  border-radius: 4px;
+  text-decoration: underline;
+  font-weight: bold;
+  flex-grow: 1;
+  color: #ffffff;
+}
+
+.amount-container {
+  display: flex;
+  flex-wrap: nowrap !important;
+}
+
+.amount-container > *{ 
+    padding: 10px;
+    flex: 1 100%;
+}
+
+.amount {
+  flex-basis: auto;
+  background: #40a8c4;
+  border: 3px solid #62929a; 
+  height: 100px;
+  flex-shrink: 2;
+}
 
 .continents-container {
     display: flex;
@@ -7,26 +63,20 @@ body {
 }
 
 .continent {
-    outline: 0;
-    margin: 5px;
     width: 20vw;
     height: 20vw;
     min-width: 150px;
     min-height: 150px;
-    border-radius: 4px;
     border: 3px solid #57a99a; 
     background-color: #76dbd1;
-    color: #ffffff;
-    font-size: 2em;
-    flex-grow: 2;
-    transition: ease 0.2s;
 }
 
-.continent:hover {
-  transform: scale(1.005);
+.select:hover, .select:active {
+  border-color: #005baa;
+  background-color: #fff;
+  color: #005baa;  
+  transform: scale(1.002);
   box-shadow: 1px 1px 10px 0px #555151;
-  /* filter: drop-shadow(5px 4px 10px #555151); */
-  text-decoration: underline;
 }
 
 .continent:focus {
@@ -46,5 +96,24 @@ body {
 
   100% {
     transform: scale(1);
+  }
+}
+
+.amount:focus {
+  outline: 0;
+  background-color: #fff;
+  color: #005baa;
+  transform: scale(0.8);
+  border-color: #005baa;
+}
+
+@media screen and (max-width: 750px) {
+  .name {
+    font-weight: 1500;
+    font-size: 2em;
+  }
+
+  .amount {
+    height: 75px;
   }
 }

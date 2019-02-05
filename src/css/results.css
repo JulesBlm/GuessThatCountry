@@ -6,7 +6,6 @@
 .result {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     --height: 50px;
     height: var(--height);
     max-width: 550px;
@@ -14,6 +13,7 @@
     padding: 10px;
     margin-top: 8px;
     text-align: center;
+    font-size: 0.9em;
     line-height: var(--height); 
     vertical-align: middle;
     font-size: 1.4em;
@@ -23,7 +23,8 @@
 }
 
 .littleCountry {
-    align-self: flex-start
+    align-self: flex-start;
+    margin: 0 20px;
 }
 
 .littleCountry path {
@@ -38,6 +39,43 @@
     background-color: palegreen;
 }
 
+@keyframes elastic {
+    from,
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(-10px, 0, 0);
+    }
+  
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  
+
+.hundred {
+    font-size: 5em;
+    animation: elastic 4s infinite;
+    text-shadow: #333333 2px;
+    margin: 0;
+}
+
 .score > h1 {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 750px) {
+    
+    .result {
+        font-size: 0.5em;
+    }
 }

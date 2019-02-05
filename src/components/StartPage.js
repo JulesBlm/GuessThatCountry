@@ -4,7 +4,7 @@ import SelectContinent from "./SelectContinent";
 
 class StartPage extends Component {
 	state = {
-        countries: []
+		countries: [],
 	}
 
     changeCountries = (countries) => {
@@ -12,9 +12,9 @@ class StartPage extends Component {
     }
 
 	render() {
-		return (
-			((this.state.countries).length === 0) ? <SelectContinent changeCountries={this.changeCountries} /> : <App countries={this.state.countries} changeCountries={this.changeCountries}/>
-		)
+		return ((this.state.countries).length === 0) ?
+		<SelectContinent changeCountries={this.changeCountries} />
+	  : <App countries={this.state.countries} changeCountries={this.changeCountries}/>
 	}
 
 }

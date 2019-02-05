@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import '../css/results.css';
 
+// index score to length of countries d3 scale?
+
 class ShowScore extends Component {
 	static PropTypes = {
 		results: PropTypes.arrayOf(PropTypes.object),
@@ -20,9 +22,20 @@ class ShowScore extends Component {
 		const totalTime = this.props.results.reduce((accumulator, currentValue) => {
 			return accumulator + currentValue.time;
 		}, 0)
+
+		const totalSkipped = this.props.results.length - totalCorrect;
+
+		const totalScore = totalCorrect ? (((totalTime/1000) + (3*totalSkipped))/totalCorrect) * this.props.results.length : 0;
 		
 		return (
 			<div className="score">
+				<h1>Score</h1>
+					{(totalCorrect - totalSkipped === totalCorrect) ?
+						(<React.Fragment><p className="hundred">💯%</p> <p> You got all of them right, well done!</p></React.Fragment>)
+					  : (<React.Fragment><p>Correct: {totalCorrect}</p> <p>Skipped: {totalSkipped}</p></React.Fragment>)}
+					<p>Total time: {(totalTime/1000).toFixed(2)} seconds</p>
+					<p>Total score: {totalScore.toFixed(2)} </p>
+
 				<h1>Results</h1>
 				<div className="results-container">
 					{this.props.results.map(i => {
@@ -37,21 +50,10 @@ class ShowScore extends Component {
 									type="image/svg+xml">
 								</object>
 
-								{capitalize(i.name)} : 
-							<div>
-								{capitalize(i.result)} in {(i.time/1000).toFixed(2)} seconds
-							</div>
+								{capitalize(i.name)} : {capitalize(i.result)} in {(i.time/1000).toFixed(2)} seconds
 							</div>
 						)
 					})}
-					<h1>Score</h1>
-					<p>
-					Correct: {totalCorrect}
-					</p>
-					<p>
-					Skipped: {this.props.results.length - totalCorrect}
-					</p>
-					<p>Total time: {(totalTime/1000).toFixed(2)} seconds</p>
 				</div>
 			</div>
 		)

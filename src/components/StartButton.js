@@ -6,7 +6,6 @@ class StartButton extends React.Component {
   	event.preventDefault();
   	
   	this.props.startDrawing(true);
-
   };
 
   render() {

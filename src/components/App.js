@@ -1,15 +1,16 @@
 /*
 1. Refactor drawing Generate SVG's on the fly with from world TopoJSON and give option to view neighbours
-   ! Fix redrawing country on hint on on wrong
+2. Calculate bounding boxes & extents on the fly!
    ! DETECT MOBILE AND ADJUST WIDTH svg's
    1. Make up score mechanism
    - Make an explanation demo
    - Make splash screen
    - hardmode turn of scaling
-   - Shake entryfrom when wrong (more animations!)
+   - More animations: Shake entryfrom when wrong
    ? Add second hint mechanism (region)
    ? Add scalebar
    ? Connect to firebase/backend show stats of avg recognition per country etc.
+        -save score etc show best 
 */
 import React, { Component } from 'react';
 import EnterForm from './EnterForm';
@@ -19,10 +20,10 @@ import DisplayMessage from './DisplayMessage';
 import ShowScore from './ShowScore'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.back = this.back.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.back = this.back.bind(this);
+    }
 
     state = {
         countries: this.props.countries,
@@ -41,9 +42,7 @@ class App extends Component {
 
     startDrawing = (bool) =>  {
         const now = Date.now();
-        this.setState({ time: now });
-        this.setState({ started: bool });
-        this.setState({ message: "first" });
+        this.setState({ time: now, started: bool, message: "first" });
     }
 
     changeMessage = (kind) => {
@@ -51,6 +50,7 @@ class App extends Component {
     }
 
     nextCountry = (result) => {
+        console.log("Next country!")
         const prevTime = this.state.time;
         const timeDifference = Date.now() - prevTime;
         const now = Date.now();
@@ -59,10 +59,10 @@ class App extends Component {
 
         const results = [...this.state.results];
         const wollo = {
-                "name": this.state.countries[this.state.index].name,
-                "result": result,
-                "time": timeDifference
-            }
+            "name": this.state.countries[this.state.index].name,
+            "result": result,
+            "time": timeDifference
+        }
         results.push(wollo);
         this.setState({ results });
 
@@ -72,29 +72,51 @@ class App extends Component {
             this.setState({ ended : true });
             return
         }
-
-        this.setState({ index : this.state.index + 1});
+   
+        // Copy state to increment index by one
+        const prevState = this.state;
+        this.setState((prevState) => ({
+            index: prevState.index + 1
+        }));        
+ 
     }
 
     render() {
-        const prevcountry = this.state.countries[this.state.index - 1];
-        const currentcountry = this.state.countries[this.state.index];
+
+        const currentindex = this.state.index;
+        const currentcountry = this.state.countries[currentindex];
+        const prevcountry =this.state.countries[currentindex - 1];
 
         return (
             <div className="app">
-                <div className="toprow">
-                    <button id="back-button" onClick={this.back} className="button button-right">Back</button>
-                </div>
+                <button onClick={this.back} className="button button-right" id="back-button">Back</button>
                 <div className="drawbox">
-                    {(this.state.started && !this.state.ended) && <AnimateCountry country={currentcountry} />}
-                    {(!this.state.started) && <StartButton startDrawing={this.startDrawing} started={this.state.started} />}
+                    {(this.state.started && !this.state.ended) &&
+                    <React.Fragment>
+                        <AnimateCountry country={currentcountry} />
+                        <DisplayMessage
+                            prevcountry={prevcountry}
+                            country={currentcountry}
+                            message={this.state.message}
+                        />
+                    </React.Fragment>
+                    }
+                    {(!this.state.started) &&
+                    <React.Fragment>
+                        <StartButton
+                            startDrawing={this.startDrawing} 
+                            started={this.state.started}
+                        />
+                        <DisplayMessage
+                            prevcountry={prevcountry}
+                            country={currentcountry}
+                            message={this.state.message}
+                        />
+                    </React.Fragment>
+                    }
                     {(this.state.ended) && <ShowScore results={this.state.results} />}
                 </div>
-                <DisplayMessage
-                        prevcountry={prevcountry}
-                        country={currentcountry}
-                        message={this.state.message}
-                />
+ 
                 {(!this.state.ended) && <EnterForm
                     changeScore={this.changeScore}
                     changeMessage={this.changeMessage}

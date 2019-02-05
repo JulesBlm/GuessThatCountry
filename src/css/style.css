@@ -7,11 +7,12 @@
 
 body {
     margin: 0 0;
+    font-family: Futura, Segoe UI, sans-serif;
 }
 
 .app {
     font-family: Futura, Segoe UI, sans-serif;
-    margin: 20px var(--margin-main);
+    margin: var(--margin-main);
 }
 
 form {
@@ -24,16 +25,13 @@ form {
 }
 
 .drawbox {
+    background: #fff;
     display: flex;
-	min-height: 450px;
+	height: 70vh;
 	border: 2px solid var(--button-color);
     border-radius: 25px;
 	margin: 2vh 0;
 	padding: 20px;
-}
-
-#animatebox {
-    height: 70vh;
 }
 
 .drawbox > * {
@@ -84,7 +82,7 @@ form {
 
 .button {
     display: inline-block;
-    padding: 13px 40px 12px;
+    padding: 14px 40px 12px;
     border: 2px solid #76dbd1;
     background-color: var(--button-color);
     transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
@@ -95,24 +93,23 @@ form {
     font-weight: 700;
     outline: 0;
     transition: ease 0.2s;
+    -webkit-tap-highlight-color: #005baa;
 }
 
+
 .button-right {
-    background-color: MEDIUMTURQUOISE;
-    border-radius: 100px;
-    border-left: 1px;
+    background-color: mediumturquoise;
+    border-right: 2px solid mediumturquoise;
+    border-radius: 0 100px 100px 0;
     padding-left: 20px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
 }
 
 .button-middle {
-    border-left: 1px;
 	background-color: mediumpurple;
 }
 
 .button:hover {
-    border-color: #005baa;
+    border: 2px solid #005baa;
     background-color: #fff;
     color: #005baa;
 }
@@ -127,11 +124,11 @@ form {
 .button[disabled] {
 	background-color: lightsteelblue;
     color: aliceblue;
-    border-color: #005baa;
+    border: 2px solid #005baa;
 	cursor: not-allowed;	
 }
 
-.button[disabled]:hover {
+.button[disabled]:hover, .button[disabled]:active {
 	background-color: lightsteelblue;
 	cursor: not-allowed;
     color: aliceblue;
@@ -141,8 +138,14 @@ form {
     .message {
         position: absolute;
         transform: rotate(-5deg);
+        max-width: 200px;
         top: 5vh;
-        left: 70vw;
+        left: 35vw;
+    }
+
+    .drawbox {
+        min-height: 50vh;
+        height: 100%;
     }
 
     .message > h2 {
@@ -157,11 +160,8 @@ form {
         margin: 0 10px;
     }
 
-    #back-button:hover {
+    #back-button:hover, #back-button:active {
         margin-left: -4vw;
-    }
-    .drawbox {
-        width: 80vw;
     }
 
     .text-input {
@@ -186,6 +186,10 @@ form {
     .button[active]:hover {
         border: 2px solid white;
         margin-top: 2px;
+    }
+
+    path, line, ellipse {
+        stroke-width: 2;
     }
 }
 
