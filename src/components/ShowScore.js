@@ -7,9 +7,6 @@ import '../css/results.css';
 // index score to length of countries d3 scale?
 
 class ShowScore extends Component {
-	static PropTypes = {
-		results: PropTypes.arrayOf(PropTypes.object),
-	}
 	render() {
 		const totalCorrect = this.props.results.reduce((accumulator, currentValue) => {
 			if (currentValue.result === "correct") {
